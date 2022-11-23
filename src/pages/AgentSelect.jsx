@@ -2,20 +2,27 @@ import { useState } from "react";
 import AgentIcon from "../components/AgentIcon";
 import BigImage from "../components/BigImage";
 
-function AgentSelect({ agentData, data, cb, cbb }) {
+const request = await fetch("https://valorant-api.com/v1/agents");
+const data = await request.json();
+const dataArr = data.data;
+const filterPlayable = dataArr.filter(
+  (data) => data.isPlayableCharacter === true
+);
+
+function AgentSelect({ agentData, cb, cbb }) {
   const [bigImage, setBigImage] = useState([]);
 
   const handleClick = (e) => {
     if (e.target.value === "Duelist") {
-      cbb(data.filter((d) => d.role.displayName === "Duelist"));
+      cbb(filterPlayable.filter((d) => d.role.displayName === "Duelist"));
     } else if (e.target.value === "Initiator") {
-      cbb(data.filter((d) => d.role.displayName === "Initiator"));
+      cbb(filterPlayable.filter((d) => d.role.displayName === "Initiator"));
     } else if (e.target.value === "Controller") {
-      cbb(data.filter((d) => d.role.displayName === "Controller"));
+      cbb(filterPlayable.filter((d) => d.role.displayName === "Controller"));
     } else if (e.target.value === "Sentinel") {
-      cbb(data.filter((d) => d.role.displayName === "Sentinel"));
+      cbb(filterPlayable.filter((d) => d.role.displayName === "Sentinel"));
     } else {
-      cbb(data);
+      cbb(filterPlayable);
     }
   };
 

@@ -54,7 +54,6 @@ function App() {
               element={
                 <AgentSelect
                   agentData={agentData}
-                  data={filterPlayable}
                   cb={setChooseAgent}
                   cbb={setAgentData}
                 />
