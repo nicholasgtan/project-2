@@ -14,12 +14,8 @@ function AgentInfo({ agent }) {
   // console.log(agent);
 
   return (
-    <main className="agentInfo">
-      <Link to="/">
-        <button>Back</button>
-      </Link>
-      <button className="rightButton">Select</button>
-      <div className="container">
+    <main>
+      <div className="agentInfo">
         <div className="info">
           <h1>{agent.displayName}</h1>
           <p>{agent.description}</p>
@@ -29,9 +25,13 @@ function AgentInfo({ agent }) {
             ))}
           </div>
         </div>
-        <img src={agent.fullPortrait} />
+        <img style={{ height: "500px" }} src={agent.fullPortrait} />
       </div>
       <br />
+      <Link to="/">
+        <button>Back</button>
+      </Link>
+      <button className="rightButton">Select</button>
     </main>
   );
 }

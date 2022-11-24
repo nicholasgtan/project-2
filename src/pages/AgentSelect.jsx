@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AgentIcon from "../components/AgentIcon";
 import BigImage from "../components/BigImage";
+import roleArr from "../assets/roleArr";
 
 function AgentSelect({ agentData, cb }) {
   const [bigImage, setBigImage] = useState([]);
   const [filter, setFilter] = useState(agentData);
+
+  useEffect(() => {
+    if (agentData) {
+      setFilter(agentData);
+    }
+  }, [agentData]);
 
   const handleClick = (e) => {
     if (e.target.value === "Duelist") {
@@ -24,30 +31,48 @@ function AgentSelect({ agentData, cb }) {
     <main className="charSelect">
       <BigImage image={bigImage} />
       <div>
-        <p>Select your Agent:</p>
-        <button onClick={handleClick}>Show All</button>{" "}
-        <button value="Duelist" onClick={handleClick}>
-          Duelist
+        <button onClick={handleClick} style={{ width: "70px", height: "23px" }}>
+          All Roles
         </button>{" "}
-        <button value="Initiator" onClick={handleClick}>
-          Initiator
-        </button>{" "}
-        <button value="Controller" onClick={handleClick}>
-          Controller
-        </button>{" "}
-        <button value="Sentinel" onClick={handleClick}>
-          Sentinel
-        </button>
+        <span>Choose your Agent:</span>
+        <div className="role">
+          {roleArr.map((role) => (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "70px",
+                height: "70px",
+              }}
+              key={role.uuid}
+              title={role.description}
+            >
+              <img className="smallIcon" src={role.displayIcon} />
+              <button value={role.displayName} onClick={handleClick}>
+                {role.displayName}
+              </button>
+            </div>
+          ))}
+        </div>
         <br />
         <br />
-        {filter.map((image) => (
-          <AgentIcon
-            img={image}
-            key={image.uuid}
-            callback={setBigImage}
-            callback2={cb}
-          />
-        ))}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            maxWidth: "1100px",
+            justifyContent: "center",
+          }}
+        >
+          {filter.map((image) => (
+            <AgentIcon
+              img={image}
+              key={image.uuid}
+              callback={setBigImage}
+              callback2={cb}
+            />
+          ))}
+        </div>
       </div>
     </main>
   );
