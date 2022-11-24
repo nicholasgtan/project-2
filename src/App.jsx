@@ -5,22 +5,6 @@ import Team from "./pages/Team";
 import Layout from "./layout/Layout";
 import { useState, useEffect } from "react";
 
-const fetchAgents = async () => {
-  try {
-    const request = await fetch("https://valorant-api.com/v1/agents");
-    const data = await request.json();
-    const dataArr = data.data;
-    const filterPlayable = dataArr.filter(
-      (data) => data.isPlayableCharacter === true
-    );
-    return filterPlayable;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const allAgents = await fetchAgents();
-
 function App() {
   const [agentData, setAgentData] = useState([]);
   const [chooseAgent, setChooseAgent] = useState([]);
@@ -50,12 +34,7 @@ function App() {
             <Route
               index
               element={
-                <AgentSelect
-                  agentData={agentData}
-                  allAgents={allAgents}
-                  cb={setChooseAgent}
-                  cbb={setAgentData}
-                />
+                <AgentSelect agentData={agentData} cb={setChooseAgent} />
               }
             />
             <Route

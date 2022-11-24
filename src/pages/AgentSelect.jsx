@@ -2,20 +2,21 @@ import { useState } from "react";
 import AgentIcon from "../components/AgentIcon";
 import BigImage from "../components/BigImage";
 
-function AgentSelect({ agentData, allAgents, cb, cbb }) {
+function AgentSelect({ agentData, cb }) {
   const [bigImage, setBigImage] = useState([]);
+  const [filter, setFilter] = useState(agentData);
 
   const handleClick = (e) => {
     if (e.target.value === "Duelist") {
-      cbb(allAgents.filter((d) => d.role.displayName === "Duelist"));
+      setFilter(agentData.filter((d) => d.role.displayName === "Duelist"));
     } else if (e.target.value === "Initiator") {
-      cbb(allAgents.filter((d) => d.role.displayName === "Initiator"));
+      setFilter(agentData.filter((d) => d.role.displayName === "Initiator"));
     } else if (e.target.value === "Controller") {
-      cbb(allAgents.filter((d) => d.role.displayName === "Controller"));
+      setFilter(agentData.filter((d) => d.role.displayName === "Controller"));
     } else if (e.target.value === "Sentinel") {
-      cbb(allAgents.filter((d) => d.role.displayName === "Sentinel"));
+      setFilter(agentData.filter((d) => d.role.displayName === "Sentinel"));
     } else {
-      cbb(allAgents);
+      setFilter(agentData);
     }
   };
 
@@ -39,7 +40,7 @@ function AgentSelect({ agentData, allAgents, cb, cbb }) {
         </button>
         <br />
         <br />
-        {agentData.map((image) => (
+        {filter.map((image) => (
           <AgentIcon
             img={image}
             key={image.uuid}
