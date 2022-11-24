@@ -14,6 +14,7 @@ function AgentIcon({ img, callback, callback2 }) {
     <Link to="/agent">
       <img
         className="icon"
+        style={{ opacity: 1 }}
         src={img.displayIcon}
         onMouseOver={handleMouseover}
         onClick={handleClick}

@@ -5,23 +5,21 @@ import Team from "./pages/Team";
 import Layout from "./layout/Layout";
 import { useState, useEffect } from "react";
 
-// const fetchAgents = async () => {
-//   try {
-//     const request = await fetch("https://valorant-api.com/v1/agents");
-//     const data = await request.json();
-//     console.log(data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-// fetchAgents();
+const fetchAgents = async () => {
+  try {
+    const request = await fetch("https://valorant-api.com/v1/agents");
+    const data = await request.json();
+    const dataArr = data.data;
+    const filterPlayable = dataArr.filter(
+      (data) => data.isPlayableCharacter === true
+    );
+    return filterPlayable;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-const request = await fetch("https://valorant-api.com/v1/agents");
-const data = await request.json();
-const dataArr = data.data;
-const filterPlayable = dataArr.filter(
-  (data) => data.isPlayableCharacter === true
-);
+const allAgents = await fetchAgents();
 
 function App() {
   const [agentData, setAgentData] = useState([]);
@@ -54,6 +52,7 @@ function App() {
               element={
                 <AgentSelect
                   agentData={agentData}
+                  allAgents={allAgents}
                   cb={setChooseAgent}
                   cbb={setAgentData}
                 />

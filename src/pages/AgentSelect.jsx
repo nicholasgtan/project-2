@@ -2,27 +2,20 @@ import { useState } from "react";
 import AgentIcon from "../components/AgentIcon";
 import BigImage from "../components/BigImage";
 
-const request = await fetch("https://valorant-api.com/v1/agents");
-const data = await request.json();
-const dataArr = data.data;
-const filterPlayable = dataArr.filter(
-  (data) => data.isPlayableCharacter === true
-);
-
-function AgentSelect({ agentData, cb, cbb }) {
+function AgentSelect({ agentData, allAgents, cb, cbb }) {
   const [bigImage, setBigImage] = useState([]);
 
   const handleClick = (e) => {
     if (e.target.value === "Duelist") {
-      cbb(filterPlayable.filter((d) => d.role.displayName === "Duelist"));
+      cbb(allAgents.filter((d) => d.role.displayName === "Duelist"));
     } else if (e.target.value === "Initiator") {
-      cbb(filterPlayable.filter((d) => d.role.displayName === "Initiator"));
+      cbb(allAgents.filter((d) => d.role.displayName === "Initiator"));
     } else if (e.target.value === "Controller") {
-      cbb(filterPlayable.filter((d) => d.role.displayName === "Controller"));
+      cbb(allAgents.filter((d) => d.role.displayName === "Controller"));
     } else if (e.target.value === "Sentinel") {
-      cbb(filterPlayable.filter((d) => d.role.displayName === "Sentinel"));
+      cbb(allAgents.filter((d) => d.role.displayName === "Sentinel"));
     } else {
-      cbb(filterPlayable);
+      cbb(allAgents);
     }
   };
 
@@ -54,7 +47,6 @@ function AgentSelect({ agentData, cb, cbb }) {
             callback2={cb}
           />
         ))}
-        {/* <AgentIcon img={agentData} callback={setBigImage} /> */}
       </div>
     </main>
   );
