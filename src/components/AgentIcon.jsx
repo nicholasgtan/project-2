@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
 
-function AgentIcon({ img, callback, callback2 }) {
+function AgentIcon({ img, team, callback, callback2 }) {
   const handleMouseover = () => {
     callback(img);
   };
 
   const handleClick = () => {
-    console.log("click");
     callback2(img);
   };
+
+  let style = team.includes(img) ? { opacity: 0.25 } : { opacity: 1 };
 
   return (
     <Link to="/agent">
       <img
         className="icon"
-        style={{ opacity: 1 }}
+        style={style}
         src={img.displayIcon}
         onMouseOver={handleMouseover}
         onClick={handleClick}

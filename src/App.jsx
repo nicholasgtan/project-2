@@ -39,7 +39,11 @@ function App() {
             <Route
               index
               element={
-                <AgentSelect agentData={agentData} cb={setChooseAgent} />
+                <AgentSelect
+                  agentData={agentData}
+                  team={team}
+                  cb={setChooseAgent}
+                />
               }
             />
             <Route

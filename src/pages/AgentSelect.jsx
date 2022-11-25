@@ -3,7 +3,7 @@ import AgentIcon from "../components/AgentIcon";
 import BigImage from "../components/BigImage";
 import roleArr from "../assets/roleArr";
 
-function AgentSelect({ agentData, cb }) {
+function AgentSelect({ agentData, team, cb }) {
   const [bigImage, setBigImage] = useState([]);
   const [filter, setFilter] = useState(agentData);
 
@@ -27,14 +27,22 @@ function AgentSelect({ agentData, cb }) {
     }
   };
 
+  let agentNo = 5 - team.length;
+
   return (
     <main className="charSelect">
       <BigImage image={bigImage} />
+      <br />
       <div>
+        <span>
+          Your Team needs 5 agents, choose wisely! <br />
+          Choices left: {agentNo}
+        </span>
+        <br />
+        <br />
         <button onClick={handleClick} style={{ width: "70px", height: "23px" }}>
           All Roles
-        </button>{" "}
-        <span>Choose 5 Agents for your team:</span>
+        </button>
         <div className="role">
           {roleArr.map((role) => (
             <div
@@ -68,6 +76,7 @@ function AgentSelect({ agentData, cb }) {
             <AgentIcon
               img={image}
               key={image.uuid}
+              team={team}
               callback={setBigImage}
               callback2={cb}
             />

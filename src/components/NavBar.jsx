@@ -7,12 +7,12 @@ function NavBar() {
     <nav>
       <img src={logoIcon} style={{ maxHeight: "70px" }} />
       <img src={logoText} style={{ maxHeight: "70px" }} />{" "}
-      <Link to="/">
-        <button className="rightButton">Agent Select</button>
-      </Link>{" "}
       <Link to="/team">
         <button className="rightButton">Team</button>
       </Link>
+      <Link to="/">
+        <button className="rightButton">Main</button>
+      </Link>{" "}
     </nav>
   );
 }

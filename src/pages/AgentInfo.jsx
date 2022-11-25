@@ -14,11 +14,11 @@ function AgentInfo({ agent, team, addTeam }) {
     } else {
       if (team.includes(a) === true) {
         alert(
-          "You have added 5 agents to your team and added this agent already, please remove an agent to add another!"
+          "You have already chosen this agent and have 5 agents in your team, please remove an agent to add another!"
         );
       } else
         alert(
-          "You have added 5 agents to your team, please remove an agent to add another!"
+          "You have chosen 5 agents for your team, please remove an agent to add another!"
         );
     }
   };
