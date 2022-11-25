@@ -1,25 +1,29 @@
 import { Link } from "react-router-dom";
 import Ability from "../components/Ability";
 
-// {agentData.map((image) => (
-//   <AgentIcon
-//     img={image}
-//     key={image.uuid}
-//     callback={setBigImage}
-//     callback2={cb}
-//   />
-// ))}
-
 function AgentInfo({ agent, team, addTeam }) {
   const handleSelect = (a) => () => {
     if (team.length < 5) {
-      addTeam(a);
+      if (team.includes(a) === false) {
+        addTeam(a);
+      } else {
+        alert(
+          "You have added this agent already, please select another agent!"
+        );
+      }
     } else {
-      alert(
-        "You have added 5 agents to your team, please remove an agent to add another!"
-      );
+      if (team.includes(a) === true) {
+        alert(
+          "You have added 5 agents to your team and added this agent already, please remove an agent to add another!"
+        );
+      } else
+        alert(
+          "You have added 5 agents to your team, please remove an agent to add another!"
+        );
     }
   };
+
+  const selectText = team.includes(agent) ? "Added" : "Add";
 
   return (
     <main>
@@ -40,7 +44,7 @@ function AgentInfo({ agent, team, addTeam }) {
         <button>Back</button>
       </Link>
       <button className="rightButton" onClick={handleSelect(agent)}>
-        Select
+        {selectText}
       </button>
     </main>
   );

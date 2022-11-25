@@ -1,7 +1,6 @@
 function Team({ team, delTeam }) {
   const handleRemove = (a) => () => {
     delTeam(a);
-    console.log(a);
   };
 
   return (
