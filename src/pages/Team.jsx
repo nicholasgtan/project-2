@@ -1,12 +1,29 @@
-function Team() {
+function Team({ team, delTeam }) {
+  const handleRemove = (a) => () => {
+    delTeam(a);
+    console.log(a);
+  };
+
   return (
-    <>
-      <div>Agent 1</div>
-      <div>Agent 2</div>
-      <div>Agent 3</div>
-      <div>Agent 4</div>
-      <div>Agent 5</div>
-    </>
+    <div className="container" style={{ flexDirection: "column" }}>
+      <h2 style={{ textAlign: "center" }}> Choose your dream team!</h2>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          maxWidth: "1100px",
+          justifyContent: "center",
+        }}
+      >
+        {team.map((agent) => (
+          <div key={agent.uuid}>
+            <img className="icon" src={agent.displayIcon} />
+            <p>{agent.displayName}</p>
+            <button onClick={handleRemove(agent)}>Remove</button>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

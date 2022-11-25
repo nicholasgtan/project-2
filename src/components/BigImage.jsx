@@ -13,7 +13,7 @@ function BigImage({ image }) {
       <img src={image.background} />
       <img src={image.fullPortrait} />
       <div>
-        <h2>{image.displayName}</h2>
+        <h1>{image.displayName}</h1>
         <p>{image.description}</p>
         <p>Click Agent Portrait for Abilities.</p>
       </div>

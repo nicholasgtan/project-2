@@ -34,7 +34,7 @@ function AgentSelect({ agentData, cb }) {
         <button onClick={handleClick} style={{ width: "70px", height: "23px" }}>
           All Roles
         </button>{" "}
-        <span>Choose your Agent:</span>
+        <span>Choose 5 Agents for your team:</span>
         <div className="role">
           {roleArr.map((role) => (
             <div

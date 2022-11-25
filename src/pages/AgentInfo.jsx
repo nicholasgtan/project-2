@@ -10,8 +10,16 @@ import Ability from "../components/Ability";
 //   />
 // ))}
 
-function AgentInfo({ agent }) {
-  // console.log(agent);
+function AgentInfo({ agent, team, addTeam }) {
+  const handleSelect = (a) => () => {
+    if (team.length < 5) {
+      addTeam(a);
+    } else {
+      alert(
+        "You have added 5 agents to your team, please remove an agent to add another!"
+      );
+    }
+  };
 
   return (
     <main>
@@ -31,7 +39,9 @@ function AgentInfo({ agent }) {
       <Link to="/">
         <button>Back</button>
       </Link>
-      <button className="rightButton">Select</button>
+      <button className="rightButton" onClick={handleSelect(agent)}>
+        Select
+      </button>
     </main>
   );
 }

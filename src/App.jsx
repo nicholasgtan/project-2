@@ -8,6 +8,11 @@ import { useState, useEffect } from "react";
 function App() {
   const [agentData, setAgentData] = useState([]);
   const [chooseAgent, setChooseAgent] = useState([]);
+  const [team, setTeam] = useState([]);
+
+  const addTeam = (agent) => setTeam([...team, agent]);
+
+  const delTeam = (agent) => setTeam(team.filter((t) => t.uuid != agent.uuid));
 
   useEffect(() => {
     const fetchAgents = async () => {
@@ -39,9 +44,14 @@ function App() {
             />
             <Route
               path="/agent"
-              element={<AgentInfo agentData={agentData} agent={chooseAgent} />}
+              element={
+                <AgentInfo agent={chooseAgent} team={team} addTeam={addTeam} />
+              }
             />
-            <Route path="/team" element={<Team />} />
+            <Route
+              path="/team"
+              element={<Team team={team} delTeam={delTeam} />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
