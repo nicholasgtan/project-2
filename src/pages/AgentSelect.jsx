@@ -33,34 +33,52 @@ function AgentSelect({ agentData, team, cb }) {
     <main className="charSelect">
       <BigImage image={bigImage} />
       <br />
-      <div>
-        <span>
-          Your Team needs 5 agents, choose wisely! <br />
-          Choices left: {agentNo}
-        </span>
-        <br />
-        <br />
-        <button onClick={handleClick} style={{ width: "70px", height: "23px" }}>
-          All Roles
-        </button>
-        <div className="role">
-          {roleArr.map((role) => (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "70px",
-                height: "70px",
-              }}
-              key={role.uuid}
-              title={role.description}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            width: "1000px",
+            justifyContent: "space-between",
+          }}
+        >
+          <span>
+            Your Team needs 5 agents, choose wisely! <br />
+            Choices left: {agentNo}
+          </span>
+          <div>
+            <button
+              onClick={handleClick}
+              style={{ width: "70px", height: "23px" }}
             >
-              <img className="smallIcon" src={role.displayIcon} />
-              <button value={role.displayName} onClick={handleClick}>
-                {role.displayName}
-              </button>
+              All Roles
+            </button>
+            <div className="role">
+              {roleArr.map((role) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "70px",
+                    height: "70px",
+                  }}
+                  key={role.uuid}
+                  title={role.description}
+                >
+                  <img className="smallIcon" src={role.displayIcon} />
+                  <button value={role.displayName} onClick={handleClick}>
+                    {role.displayName}
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
         <br />
         <br />

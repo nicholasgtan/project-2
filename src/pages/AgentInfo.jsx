@@ -28,24 +28,40 @@ function AgentInfo({ agent, team, addTeam }) {
   return (
     <main>
       <div className="agentInfo">
-        <div className="info">
-          <h1>{agent.displayName}</h1>
-          <p>{agent.description}</p>
-          <div className="ablcont">
-            {agent.abilities.map((abl) => (
-              <Ability abl={abl} key={abl.slot} />
-            ))}
+        <div style={{ maxWidth: "1000px", display: "flex" }}>
+          <div className="info">
+            <h1>{agent.displayName}</h1>
+            <p>{agent.description}</p>
+            <div className="ablcont">
+              {agent.abilities.map((abl) => (
+                <Ability abl={abl} key={abl.slot} />
+              ))}
+            </div>
           </div>
+          <img style={{ height: "400px" }} src={agent.fullPortrait} />
         </div>
-        <img style={{ height: "500px" }} src={agent.fullPortrait} />
       </div>
-      <br />
-      <Link to="/">
-        <button>Back</button>
-      </Link>
-      <button className="rightButton" onClick={handleSelect(agent)}>
-        {selectText}
-      </button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "1000px",
+          }}
+        >
+          <Link to="/">
+            <button>Back</button>
+          </Link>
+          <button className="rightButton" onClick={handleSelect(agent)}>
+            {selectText}
+          </button>
+        </div>
+      </div>
     </main>
   );
 }

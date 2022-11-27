@@ -1,11 +1,15 @@
 body {
   background-color: teal;
-  max-width: 1100px;
   font-family: "Roboto", sans-serif;
 }
 
 h1 {
   color: white;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -14,7 +18,7 @@ h1 {
   height: 400px;
   color: white;
   justify-content: center;
-  max-width: 1100px;
+  flex-grow: 1;
 }
 
 span {
@@ -34,16 +38,6 @@ span {
   border: solid white 1px;
 }
 
-.ablcont {
-  display: flex;
-  width: 800px;
-  font-size: 13px;
-}
-
-.info {
-  width: 800px;
-}
-
 .abl {
   width: 200px;
   margin: 5px;
@@ -60,9 +54,18 @@ span {
 .agentInfo {
   display: flex;
   flex-direction: row;
-  height: 550px;
   color: white;
-  max-width: 1100px;
+  justify-content: center;
+}
+
+.info {
+  width: 60%;
+}
+
+.ablcont {
+  display: flex;
+  font-size: 13px;
+  justify-content: center;
 }
 
 p {

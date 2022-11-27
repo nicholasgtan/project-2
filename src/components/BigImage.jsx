@@ -12,7 +12,7 @@ function BigImage({ image }) {
     <div className="container">
       <img src={image.background} />
       <img src={image.fullPortrait} />
-      <div>
+      <div style={{ maxWidth: "300px" }}>
         <h1>{image.displayName}</h1>
         <p>{image.description}</p>
         <p>Click Agent Portrait for Abilities.</p>
