@@ -1,10 +1,43 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Ability from "../components/Ability";
 
-function AgentInfo({ agent, team, addTeam }) {
+function AgentInfo({ team, addTeam }) {
+  const { id } = useParams();
+  const [agent, setAgent] = useState([]);
+  const [ability, setAbility] = useState([]);
+
+  useEffect(() => {
+    let controller = new AbortController();
+    const signal = controller.signal;
+
+    const fetchAgents = async () => {
+      try {
+        const request = await fetch(
+          `https://valorant-api.com/v1/agents/${id}`,
+          { signal }
+        );
+        const data = await request.json();
+        const dataArr = data.data;
+        setAgent(dataArr);
+        setAbility(dataArr.abilities);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchAgents();
+    return () => {
+      controller.abort();
+    };
+  }, [id]);
+
+  const add = team.findIndex((t) => t.uuid === agent.uuid) === -1;
+  const notAdd = team.findIndex((t) => t.uuid === agent.uuid) !== -1;
+  const text = add ? "Add" : "Added";
+
   const handleSelect = (a) => () => {
     if (team.length < 5) {
-      if (team.includes(a) === false) {
+      if (add) {
         addTeam(a);
       } else {
         alert(
@@ -12,7 +45,7 @@ function AgentInfo({ agent, team, addTeam }) {
         );
       }
     } else {
-      if (team.includes(a) === true) {
+      if (notAdd) {
         alert(
           "You have already chosen this agent and have 5 agents in your team, please remove an agent to add another!"
         );
@@ -23,8 +56,6 @@ function AgentInfo({ agent, team, addTeam }) {
     }
   };
 
-  const selectText = team.includes(agent) ? "Added" : "Add";
-
   return (
     <main>
       <div className="agentInfo">
@@ -33,7 +64,7 @@ function AgentInfo({ agent, team, addTeam }) {
             <h1>{agent.displayName}</h1>
             <p>{agent.description}</p>
             <div className="ablcont">
-              {agent.abilities.map((abl) => (
+              {ability.map((abl) => (
                 <Ability abl={abl} key={abl.slot} />
               ))}
             </div>
@@ -58,7 +89,7 @@ function AgentInfo({ agent, team, addTeam }) {
             <button>Back</button>
           </Link>
           <button className="rightButton" onClick={handleSelect(agent)}>
-            {selectText}
+            {text}
           </button>
         </div>
       </div>

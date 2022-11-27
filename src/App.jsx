@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [agentData, setAgentData] = useState([]);
-  const [chooseAgent, setChooseAgent] = useState([]);
   const [team, setTeam] = useState([]);
 
   const addTeam = (agent) => setTeam([...team, agent]);
@@ -38,19 +37,11 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route
               index
-              element={
-                <AgentSelect
-                  agentData={agentData}
-                  team={team}
-                  cb={setChooseAgent}
-                />
-              }
+              element={<AgentSelect agentData={agentData} team={team} />}
             />
             <Route
-              path="/agent"
-              element={
-                <AgentInfo agent={chooseAgent} team={team} addTeam={addTeam} />
-              }
+              path="/agent/:id"
+              element={<AgentInfo team={team} addTeam={addTeam} />}
             />
             <Route
               path="/team"

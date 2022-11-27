@@ -3,9 +3,9 @@ import AgentIcon from "../components/AgentIcon";
 import BigImage from "../components/BigImage";
 import roleArr from "../assets/roleArr";
 
-function AgentSelect({ agentData, team, cb }) {
+function AgentSelect({ agentData, team }) {
   const [bigImage, setBigImage] = useState([]);
-  const [filter, setFilter] = useState(agentData);
+  const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     if (agentData) {
@@ -96,7 +96,6 @@ function AgentSelect({ agentData, team, cb }) {
               key={image.uuid}
               team={team}
               callback={setBigImage}
-              callback2={cb}
             />
           ))}
         </div>

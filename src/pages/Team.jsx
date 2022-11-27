@@ -10,7 +10,6 @@ function Team({ team, delTeam }) {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          maxWidth: "1100px",
           justifyContent: "center",
         }}
       >
