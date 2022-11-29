@@ -8,7 +8,6 @@ p {
 }
 
 /* shared class css */
-
 .icon {
   width: 100px;
   height: 100px;
@@ -31,7 +30,7 @@ p {
   color: white;
 }
 
-.filterButtons {
+.filterButton {
   width: 70px;
   height: 23px;
 }
@@ -112,6 +111,7 @@ span {
   justify-content: center;
   flex-grow: 1;
   text-align: center;
+  align-items: center;
 }
 
 .teamMap {
@@ -120,8 +120,16 @@ span {
   justify-content: center;
 }
 
-/* Layout.jsx css */
+.teamDiv {
+  display: flex;
+  flex-direction: column;
+}
 
+.teamButton {
+  width: 102px;
+}
+
+/* Layout.jsx css */
 .footer {
   text-align: center;
   font-size: 10px;
@@ -129,7 +137,6 @@ span {
 }
 
 /* NavBar.jsx css */
-
 .nav {
   display: flex;
   justify-content: center;

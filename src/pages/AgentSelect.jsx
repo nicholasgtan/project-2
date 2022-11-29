@@ -50,7 +50,7 @@ function AgentSelect({ agentData, teamMembers, add }) {
                 >
                   <img className="smallIcon" src={role.displayIcon} />
                   <button
-                    className="filterButtons"
+                    className="filterButton"
                     value={role.displayName}
                     onClick={handleFilter}
                   >

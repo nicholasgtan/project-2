@@ -12,6 +12,7 @@ function App() {
   const teamMembers = team.length;
   const addTeam = (agent) => setTeam([...team, agent]);
   const delTeam = (agent) => setTeam(team.filter((t) => t.uuid != agent.uuid));
+  const resetTeam = () => setTeam([]);
   const add = (agent) => team.findIndex((t) => t.uuid === agent.uuid) === -1;
   const notAdd = (agent) => team.findIndex((t) => t.uuid === agent.uuid) !== -1;
 
@@ -68,7 +69,9 @@ function App() {
             />
             <Route
               path="/team"
-              element={<Team team={team} delTeam={delTeam} />}
+              element={
+                <Team team={team} delTeam={delTeam} resetTeam={resetTeam} />
+              }
             />
           </Route>
         </Routes>
