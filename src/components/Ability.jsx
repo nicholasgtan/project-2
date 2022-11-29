@@ -6,9 +6,7 @@ function Ability({ abl }) {
     <div className="abl">
       <img className="icon" src={abl.displayIcon} />
       <br />
-      <span style={{ textDecoration: "underline", fontSize: "14px" }}>
-        {abl.displayName}
-      </span>
+      <span className="abl-title">{abl.displayName}</span>
       <br />
       {abl.description}
     </div>

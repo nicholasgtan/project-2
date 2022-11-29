@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 
-function AgentIcon({ img, team, callback }) {
+function AgentIcon({ img, add, callback }) {
   const handleMouseover = () => {
     callback(img);
   };
 
-  const add = team.findIndex((t) => t.uuid === img.uuid) === -1;
-  let style = add ? { opacity: 1 } : { opacity: 0.25 };
+  let style = add(img) ? { opacity: 1 } : { opacity: 0.25 };
 
   return (
     <Link to={`/agent/${img.uuid}`}>

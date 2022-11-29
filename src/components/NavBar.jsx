@@ -5,9 +5,9 @@ import logoText from "../assets/V_Logotype_Off-White.png";
 function NavBar() {
   return (
     <nav className="nav">
-      <div style={{ width: "1000px" }}>
-        <img src={logoIcon} style={{ maxHeight: "70px" }} />
-        <img src={logoText} style={{ maxHeight: "70px" }} />{" "}
+      <div className="nav-content">
+        <img className="nav-image" src={logoIcon} />
+        <img className="nav-image" src={logoText} />{" "}
         <Link to="/team">
           <button className="rightButton">Team</button>
         </Link>

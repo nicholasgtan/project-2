@@ -4,15 +4,9 @@ function Team({ team, delTeam }) {
   };
 
   return (
-    <div className="container" style={{ flexDirection: "column" }}>
-      <h2 style={{ textAlign: "center" }}> Choose your dream team!</h2>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
+    <div className="teamBody">
+      <h2> Choose your dream team!</h2>
+      <div className="teamMap">
         {team.map((agent) => (
           <div key={agent.uuid}>
             <img className="icon" src={agent.displayIcon} />

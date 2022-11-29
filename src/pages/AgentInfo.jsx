@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Ability from "../components/Ability";
 
-function AgentInfo({ team, addTeam }) {
+function AgentInfo({ teamMembers, addTeam, add, notAdd }) {
   const { id } = useParams();
   const [agent, setAgent] = useState([]);
   const [ability, setAbility] = useState([]);
@@ -31,13 +31,11 @@ function AgentInfo({ team, addTeam }) {
     };
   }, [id]);
 
-  const add = team.findIndex((t) => t.uuid === agent.uuid) === -1;
-  const notAdd = team.findIndex((t) => t.uuid === agent.uuid) !== -1;
-  const text = add ? "Add" : "Added";
+  const text = add(agent) ? "Add" : "Added";
 
   const handleSelect = (a) => () => {
-    if (team.length < 5) {
-      if (add) {
+    if (teamMembers < 5) {
+      if (add(agent)) {
         addTeam(a);
       } else {
         alert(
@@ -45,7 +43,7 @@ function AgentInfo({ team, addTeam }) {
         );
       }
     } else {
-      if (notAdd) {
+      if (notAdd(agent)) {
         alert(
           "You have already chosen this agent and have 5 agents in your team, please remove an agent to add another!"
         );
@@ -58,9 +56,9 @@ function AgentInfo({ team, addTeam }) {
 
   return (
     <main>
-      <div className="agentInfo">
-        <div style={{ maxWidth: "1000px", display: "flex" }}>
-          <div className="info">
+      <div className="agentInfo-main">
+        <div className="agentInfo-content">
+          <div className="contentInfo">
             <h1>{agent.displayName}</h1>
             <p>{agent.description}</p>
             <div className="ablcont">
@@ -69,28 +67,15 @@ function AgentInfo({ team, addTeam }) {
               ))}
             </div>
           </div>
-          <img style={{ height: "400px" }} src={agent.fullPortrait} />
+          <img className="agentInfo-portrait" src={agent.fullPortrait} />
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "1000px",
-          }}
-        >
+      <div className="agentInfo-bottomBar">
+        <div className="agentInfo-bottomButtons">
           <Link to="/">
             <button>Back</button>
           </Link>
-          <button className="rightButton" onClick={handleSelect(agent)}>
-            {text}
-          </button>
+          <button onClick={handleSelect(agent)}>{text}</button>
         </div>
       </div>
     </main>

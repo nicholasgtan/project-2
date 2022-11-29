@@ -3,33 +3,48 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-h1 {
-  color: white;
-}
-
-.nav {
-  display: flex;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  height: 400px;
-  color: white;
-  justify-content: center;
-  flex-grow: 1;
-}
-
-span {
+p {
   text-align: justify;
-  color: white;
 }
+
+/* shared class css */
 
 .icon {
   width: 100px;
   height: 100px;
   border: solid white 1px;
+}
+
+/* AgentSelect.jsx CSS */
+.charSelect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.charSelect-interact {
+  display: flex;
+  align-items: flex-end;
+  width: 1000px;
+  justify-content: space-between;
+  text-align: justify;
+  color: white;
+}
+
+.filterButtons {
+  width: 70px;
+  height: 23px;
+}
+
+.role {
+  display: flex;
+}
+
+.roleMap {
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  height: 70px;
 }
 
 .smallIcon {
@@ -38,27 +53,32 @@ span {
   border: solid white 1px;
 }
 
-.abl {
-  width: 200px;
-  margin: 5px;
-}
-
-.rightButton {
-  float: right;
-}
-
-.role {
+.agentMap {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  justify-content: center;
 }
 
-.agentInfo {
+span {
+  text-align: justify;
+  color: white;
+}
+
+/* AgentInfo.jsx css */
+.agentInfo-main {
   display: flex;
   flex-direction: row;
   color: white;
   justify-content: center;
 }
 
-.info {
+.agentInfo-content {
+  display: flex;
+  max-width: 1000px;
+}
+
+.contentInfo {
   width: 60%;
 }
 
@@ -68,6 +88,86 @@ span {
   justify-content: center;
 }
 
-p {
-  text-align: justify;
+.agentInfo-portrait {
+  height: 400px;
+}
+
+.agentInfo-bottomBar {
+  display: flex;
+  justify-content: center;
+}
+
+.agentInfo-bottomButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+}
+
+/* Team.jsx css */
+.teamBody {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  color: white;
+  justify-content: center;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.teamMap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Layout.jsx css */
+
+.footer {
+  text-align: center;
+  font-size: 10px;
+  color: white;
+}
+
+/* NavBar.jsx css */
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-content {
+  width: 1000px;
+}
+
+.nav-image {
+  max-height: 70px;
+}
+
+.rightButton {
+  float: right;
+}
+
+/* BigImage.jsx css */
+.bigImage-main {
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+  color: white;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.bigImage-info {
+  max-width: 300px;
+}
+
+/* Ability.jsx css */
+.abl {
+  width: 200px;
+  margin: 5px;
+}
+
+.abl-title {
+  text-decoration: underline;
+  font-size: 15px;
 }

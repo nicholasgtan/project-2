@@ -3,7 +3,7 @@ import AgentIcon from "../components/AgentIcon";
 import BigImage from "../components/BigImage";
 import roleArr from "../assets/roleArr";
 
-function AgentSelect({ agentData, team }) {
+function AgentSelect({ agentData, teamMembers, add }) {
   const [bigImage, setBigImage] = useState([]);
   const [filter, setFilter] = useState([]);
 
@@ -13,7 +13,7 @@ function AgentSelect({ agentData, team }) {
     }
   }, [agentData]);
 
-  const handleClick = (e) => {
+  const handleFilter = (e) => {
     if (e.target.value === "Duelist") {
       setFilter(agentData.filter((d) => d.role.displayName === "Duelist"));
     } else if (e.target.value === "Initiator") {
@@ -27,52 +27,33 @@ function AgentSelect({ agentData, team }) {
     }
   };
 
-  let agentNo = 5 - team.length;
+  let agentNo = 5 - teamMembers;
 
   return (
-    <main className="charSelect">
+    <main>
       <BigImage image={bigImage} />
       <br />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            width: "1000px",
-            justifyContent: "space-between",
-          }}
-        >
-          <span>
-            Your Team needs 5 agents, choose wisely! <br />
-            Choices left: {agentNo}
-          </span>
+      <div className="charSelect">
+        <div className="charSelect-interact">
+          Your Team needs 5 agents, choose wisely! <br />
+          Choices left: {agentNo}
           <div>
-            <button
-              onClick={handleClick}
-              style={{ width: "70px", height: "23px" }}
-            >
+            <button className="filterButtons" onClick={handleFilter}>
               All Roles
             </button>
             <div className="role">
               {roleArr.map((role) => (
                 <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "70px",
-                    height: "70px",
-                  }}
+                  className="roleMap"
                   key={role.uuid}
                   title={role.description}
                 >
                   <img className="smallIcon" src={role.displayIcon} />
-                  <button value={role.displayName} onClick={handleClick}>
+                  <button
+                    className="filterButtons"
+                    value={role.displayName}
+                    onClick={handleFilter}
+                  >
                     {role.displayName}
                   </button>
                 </div>
@@ -82,19 +63,12 @@ function AgentSelect({ agentData, team }) {
         </div>
         <br />
         <br />
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            maxWidth: "1100px",
-            justifyContent: "center",
-          }}
-        >
+        <div className="agentMap">
           {filter.map((image) => (
             <AgentIcon
               img={image}
               key={image.uuid}
-              team={team}
+              add={add}
               callback={setBigImage}
             />
           ))}

@@ -1,22 +1,29 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AgentSelect from "./pages/AgentSelect";
 import AgentInfo from "./pages/AgentInfo";
 import Team from "./pages/Team";
 import Layout from "./layout/Layout";
-import { useState, useEffect } from "react";
 
 function App() {
   const [agentData, setAgentData] = useState([]);
   const [team, setTeam] = useState([]);
 
+  const teamMembers = team.length;
   const addTeam = (agent) => setTeam([...team, agent]);
-
   const delTeam = (agent) => setTeam(team.filter((t) => t.uuid != agent.uuid));
+  const add = (agent) => team.findIndex((t) => t.uuid === agent.uuid) === -1;
+  const notAdd = (agent) => team.findIndex((t) => t.uuid === agent.uuid) !== -1;
 
   useEffect(() => {
+    let controller = new AbortController();
+    const signal = controller.signal;
+
     const fetchAgents = async () => {
       try {
-        const request = await fetch("https://valorant-api.com/v1/agents");
+        const request = await fetch("https://valorant-api.com/v1/agents", {
+          signal,
+        });
         const data = await request.json();
         const dataArr = data.data;
         const filterPlayable = dataArr.filter(
@@ -28,6 +35,9 @@ function App() {
       }
     };
     fetchAgents();
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
@@ -37,11 +47,24 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route
               index
-              element={<AgentSelect agentData={agentData} team={team} />}
+              element={
+                <AgentSelect
+                  agentData={agentData}
+                  teamMembers={teamMembers}
+                  add={add}
+                />
+              }
             />
             <Route
               path="/agent/:id"
-              element={<AgentInfo team={team} addTeam={addTeam} />}
+              element={
+                <AgentInfo
+                  teamMembers={teamMembers}
+                  addTeam={addTeam}
+                  add={add}
+                  notAdd={notAdd}
+                />
+              }
             />
             <Route
               path="/team"
