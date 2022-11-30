@@ -72,5 +72,5 @@ I utilized Lucidchart to draft the pages and elements as below:
 
 ## API and References
 
-[Valorant-API](https://valorant-api.com/)
-This project was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
+- [Valorant-API](https://valorant-api.com/)
+- This project was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
