@@ -31,8 +31,9 @@ p {
 }
 
 .filterButton {
-  width: 70px;
+  width: 66px;
   height: 23px;
+  font-size: 11px;
 }
 
 .role {
@@ -42,13 +43,11 @@ p {
 .roleMap {
   display: flex;
   flex-direction: column;
-  width: 70px;
-  height: 70px;
 }
 
 .smallIcon {
-  width: 66.5px;
-  height: 66.5px;
+  width: 66px;
+  height: 66px;
   border: solid white 1px;
 }
 
@@ -108,6 +107,10 @@ span {
   width: 1000px;
 }
 
+.infoButton {
+  width: 70px;
+}
+
 /* Team.jsx css */
 .teamBody {
   display: flex;
@@ -132,7 +135,7 @@ span {
 }
 
 .teamButton {
-  width: 102px;
+  width: 100px;
 }
 
 /* Layout.jsx css */
@@ -150,14 +153,17 @@ span {
 
 .nav-content {
   width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-image {
   max-height: 70px;
 }
 
-.rightButton {
-  float: right;
+.navButton {
+  width: 90px;
 }
 
 /* BigImage.jsx css */

@@ -1,3 +1,5 @@
+import { Button } from "react-bootstrap";
+
 function Team({ team, delTeam, resetTeam }) {
   const handleRemove = (a) => () => {
     delTeam(a);
@@ -17,16 +19,27 @@ function Team({ team, delTeam, resetTeam }) {
           <div className="teamDiv" key={agent.uuid}>
             {agent.displayName}
             <img className="icon" src={agent.displayIcon} />
-            <button className="teamButton" onClick={handleRemove(agent)}>
+            <Button
+              className="teamButton"
+              variant="outline-light"
+              size="sm"
+              onClick={handleRemove(agent)}
+            >
               Remove
-            </button>
+            </Button>
           </div>
         ))}
       </div>
       <br />
-      <button className="teamButton" onClick={handleReset} style={hideButton}>
+      <Button
+        className="teamButton"
+        variant="outline-light"
+        size="sm"
+        onClick={handleReset}
+        style={hideButton}
+      >
         Remove All
-      </button>
+      </Button>
     </div>
   );
 }

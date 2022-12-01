@@ -62,6 +62,7 @@ function App() {
                 <AgentInfo
                   teamMembers={teamMembers}
                   addTeam={addTeam}
+                  delTeam={delTeam}
                   add={add}
                   notAdd={notAdd}
                 />

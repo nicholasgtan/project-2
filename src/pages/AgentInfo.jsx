@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Ability from "../components/Ability";
+import { Button } from "react-bootstrap";
 
-function AgentInfo({ teamMembers, addTeam, add, notAdd }) {
+function AgentInfo({ teamMembers, addTeam, delTeam, add, notAdd }) {
   const { id } = useParams();
   const [agent, setAgent] = useState([]);
   const [ability, setAbility] = useState([]);
@@ -31,7 +32,8 @@ function AgentInfo({ teamMembers, addTeam, add, notAdd }) {
     };
   }, [id]);
 
-  const text = add(agent) ? "Add" : "Added";
+  const text = add(agent) ? "Add" : "Remove";
+  const variant = add(agent) ? "outline-light" : "light";
 
   const handleSelect = (a) => () => {
     if (teamMembers < 5) {
@@ -44,9 +46,10 @@ function AgentInfo({ teamMembers, addTeam, add, notAdd }) {
       }
     } else {
       if (notAdd(agent)) {
-        alert(
-          "You have already chosen this agent and have 5 agents in your team, please remove an agent to add another!"
-        );
+        delTeam(a);
+        // alert(
+        //   "You have already chosen this agent and have 5 agents in your team, please remove an agent to add another!"
+        // );
       } else
         alert(
           "You have chosen 5 agents for your team, please remove an agent to add another!"
@@ -73,9 +76,18 @@ function AgentInfo({ teamMembers, addTeam, add, notAdd }) {
       <div className="agentInfo-bottomBar">
         <div className="agentInfo-bottomButtons">
           <Link to="/">
-            <button>Back</button>
+            <Button className="infoButton" variant="outline-light" size="sm">
+              Back
+            </Button>
           </Link>
-          <button onClick={handleSelect(agent)}>{text}</button>
+          <Button
+            className="infoButton"
+            variant={variant}
+            size="sm"
+            onClick={handleSelect(agent)}
+          >
+            {text}
+          </Button>
         </div>
       </div>
     </main>

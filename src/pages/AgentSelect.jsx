@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AgentIcon from "../components/AgentIcon";
 import BigImage from "../components/BigImage";
 import roleArr from "../assets/roleArr";
+import { Button } from "react-bootstrap";
 
 function AgentSelect({ agentData, teamMembers, add }) {
   const [bigImage, setBigImage] = useState([]);
@@ -38,9 +39,14 @@ function AgentSelect({ agentData, teamMembers, add }) {
           Your Team needs 5 agents, choose wisely! <br />
           Choices left: {agentNo}
           <div>
-            <button className="filterButtons" onClick={handleFilter}>
+            <Button
+              className="filterButton"
+              variant="outline-light"
+              size="sm"
+              onClick={handleFilter}
+            >
               All Roles
-            </button>
+            </Button>
             <div className="role">
               {roleArr.map((role) => (
                 <div
@@ -49,17 +55,18 @@ function AgentSelect({ agentData, teamMembers, add }) {
                   title={role.description}
                 >
                   <img className="smallIcon" src={role.displayIcon} />
-                  <button
+                  <Button
                     className="filterButton"
+                    variant="outline-light"
+                    size="sm"
                     value={role.displayName}
                     onClick={handleFilter}
                   >
                     {role.displayName}
-                  </button>
+                  </Button>
                 </div>
               ))}
             </div>
-            <br />
             <div id="grad">
               ⚔️Attack<div></div>Defence🛡️
             </div>

@@ -24,10 +24,11 @@
 
 ## Technologies & tools used
 
+- Vite
 - React
 - Fetch for API
+- Bootstrap React
 - Cypress for E2E testing
-- Vite
 
 ## Wireframes
 
@@ -66,6 +67,7 @@ I utilized Lucidchart to draft the pages and elements as below:
 6. Cleaned up code and css
    - Consolidated similar logics and states to respective parent.
    - Cleaned up css from in-line styles to css file.
+   - (Bonus!) Installed Bootstrap to soup up all the buttons!
 7. Tried Cypress IO E2E testing for the first time.
 8. Finalize README.
 9. Complete.
