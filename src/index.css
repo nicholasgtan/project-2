@@ -23,7 +23,7 @@ p {
 
 .charSelect-interact {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   width: 1000px;
   justify-content: space-between;
   text-align: justify;
@@ -50,6 +50,12 @@ p {
   width: 66.5px;
   height: 66.5px;
   border: solid white 1px;
+}
+
+#grad {
+  background-image: linear-gradient(to right, red, blue);
+  display: flex;
+  justify-content: space-between;
 }
 
 .agentMap {

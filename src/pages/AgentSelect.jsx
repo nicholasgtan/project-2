@@ -59,9 +59,12 @@ function AgentSelect({ agentData, teamMembers, add }) {
                 </div>
               ))}
             </div>
+            <br />
+            <div id="grad">
+              ⚔️Attack<div></div>Defence🛡️
+            </div>
           </div>
         </div>
-        <br />
         <br />
         <div className="agentMap">
           {filter.map((image) => (
