@@ -60,7 +60,7 @@ p {
 .agentMap {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1100px;
+  max-width: 1000px;
   justify-content: center;
 }
 
@@ -79,6 +79,7 @@ span {
 
 .agentInfo-content {
   display: flex;
+  justify-content: center;
   max-width: 1000px;
 }
 
@@ -93,7 +94,7 @@ span {
 }
 
 .agentInfo-portrait {
-  height: 400px;
+  height: 360px;
 }
 
 .agentInfo-bottomBar {
@@ -132,6 +133,7 @@ span {
 .teamDiv {
   display: flex;
   flex-direction: column;
+  font-size: 20px;
 }
 
 .teamButton {
@@ -170,7 +172,7 @@ span {
 .bigImage-main {
   display: flex;
   flex-direction: row;
-  height: 400px;
+  height: 380px;
   color: white;
   justify-content: center;
   flex-grow: 1;

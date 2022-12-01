@@ -36,24 +36,14 @@ function AgentInfo({ teamMembers, addTeam, delTeam, add, notAdd }) {
   const variant = add(agent) ? "outline-light" : "light";
 
   const handleSelect = (a) => () => {
-    if (teamMembers < 5) {
-      if (add(agent)) {
-        addTeam(a);
-      } else {
-        alert(
-          "You have added this agent already, please select another agent!"
-        );
-      }
+    if (add(agent) && teamMembers < 5) {
+      addTeam(a);
+    } else if (notAdd(agent)) {
+      delTeam(a);
     } else {
-      if (notAdd(agent)) {
-        delTeam(a);
-        // alert(
-        //   "You have already chosen this agent and have 5 agents in your team, please remove an agent to add another!"
-        // );
-      } else
-        alert(
-          "You have chosen 5 agents for your team, please remove an agent to add another!"
-        );
+      alert(
+        "You have chosen 5 agents for your team, please remove an agent to add another!"
+      );
     }
   };
 
